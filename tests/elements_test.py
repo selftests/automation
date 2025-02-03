@@ -65,6 +65,8 @@ class TestElements:
             key_word = web_table_page.add_new_person()[random.randint(0, 5)]
             web_table_page.search_some_person(key_word)
             table_result = web_table_page.check_search_person()
+            print(key_word)
+            print(table_result)
             assert key_word in table_result, "the person was not found in the table"
 
         @allure.title('Checking to update the persons info in the table')
@@ -91,7 +93,7 @@ class TestElements:
         def test_web_table_change_count_row(self, driver):
             web_table_page = WebTablePage(driver, 'https://demoqa.com/webtables')
             web_table_page.open()
-            count = web_table_page.select_up_to_some_rows()
+            count = web_table_page.select_up_to_some_rows()            
             assert count == [5, 10, 20, 25, 50,
                              100], 'The number of rows in the table has not been changed or has changed incorrectly'
 

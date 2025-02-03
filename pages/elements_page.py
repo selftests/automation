@@ -39,7 +39,7 @@ class TextBoxPage(BasePage):
         full_name = self.element_is_present(self.locators.CREATED_FULL_NAME).text.split(':')[1]
         email = self.element_is_present(self.locators.CREATED_EMAIL).text.split(':')[1]
         current_address = self.element_is_present(self.locators.CREATED_CURRENT_ADDRESS).text.split(':')[1]
-        permanent_address = self.element_is_present(self.locators.CREATED_PERMANENT_ADDRESS)
+        permanent_address = self.element_is_present(self.locators.CREATED_PERMANENT_ADDRESS).text.split(':')[1]
         return full_name, email, current_address, permanent_address
 
 
@@ -117,7 +117,7 @@ class WebTablePage(BasePage):
             self.element_is_visible(self.locators.AGE_INPUT).send_keys(age)
             self.element_is_visible(self.locators.SALARY_INPUT).send_keys(salary)
             self.element_is_visible(self.locators.DEPARTMENT_INPUT).send_keys(department)
-            self.element_is_visible(self.locators.SUBMIT).click()
+            self.element_is_visible(self.locators.SUBMIT).click()           
             count -= 1
             return [firstname, lastname, str(age), email, str(salary), department]
 
@@ -126,7 +126,7 @@ class WebTablePage(BasePage):
         people_list = self.elements_are_present(self.locators.FULL_PEOPLE_LIST)
         data = []
         for item in people_list:
-            data.append(item.text.splitlines())
+            data.append(item.text.splitlines())            
         return data
 
     @allure.step('find some person')
@@ -136,7 +136,7 @@ class WebTablePage(BasePage):
     @allure.step('check found person')
     def check_search_person(self):
         delete_button = self.element_is_present(self.locators.DELETE_BUTTON)
-        row = delete_button.find_element_by_xpath(self.locators.ROW_PARENT)
+        row = delete_button.find_element(By.XPATH, self.locators.ROW_PARENT)
         return row.text.splitlines()
 
     @allure.step('update person information')
@@ -235,7 +235,7 @@ class UploadAndDownloadPage(BasePage):
     def download_file(self):
         link = self.element_is_present(self.locators.DOWNLOAD_FILE).get_attribute('href')
         link_b = base64.b64decode(link)
-        path_name_file = rf'E:\automation_qa_course\filetest{random.randint(0, 999)}.jpg'
+        path_name_file = rf'C:\Users\User\Desktop\example\automation\filetest{random.randint(0, 999)}.jpg'
         with open(path_name_file, 'wb+') as f:
             offset = link_b.find(b'\xff\xd8')
             f.write(link_b[offset:])
