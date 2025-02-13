@@ -35,6 +35,8 @@ class AccordianPage(BasePage):
         except TimeoutException:
             section_title.click()
             section_content = self.element_is_visible(accordian[accordian_num]['content']).text
+        #print(section_title.text)
+        #print(len(section_content))
         return [section_title.text, len(section_content)]
 
 

@@ -79,5 +79,10 @@ class UploadAndDownloadPageLocators:
 
 class DynamicPropertiesPageLocators:
     COLOR_CHANGE_BUTTON = (By.CSS_SELECTOR, 'button[id="colorChange"]')
+    
+    COLOR_CHANGE_CLASS_ONE_BUTTON = (By.XPATH, "//button[@class='mt-4 btn btn-primary'][2]")
+    COLOR_CHANGE_CLASS_TWO_BUTTON = (By.CSS_SELECTOR, "button[class='mt-4 text-danger btn btn-primary']")
+
     VISIBLE_AFTER_FIVE_SEC_BUTTON = (By.CSS_SELECTOR, 'button[id="visibleAfter"]')
     ENABLE_BUTTON = (By.CSS_SELECTOR, 'button[id="enableAfter"]')
+    

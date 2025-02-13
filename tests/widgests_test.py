@@ -38,6 +38,8 @@ class TestWidgets:
             autocomplete_page.open()
             autocomplete_page.fill_input_multi()
             count_value_before, count_value_after = autocomplete_page.remove_value_from_multi()
+            #print(count_value_before)
+            #print(count_value_after)
             assert count_value_before != count_value_after, "value was not deleted"
 
         @allure.title('Check deletions from the single autocomplete')

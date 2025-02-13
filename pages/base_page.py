@@ -76,3 +76,5 @@ class BasePage:
     def remove_footer(self):
         self.driver.execute_script("document.getElementsByTagName('footer')[0].remove();")
         self.driver.execute_script("document.getElementsById('close-fixedban').remove();")
+
+  

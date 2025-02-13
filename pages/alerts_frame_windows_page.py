@@ -4,9 +4,11 @@ import time
 import allure
 from selenium.common.exceptions import UnexpectedAlertPresentException
 
+
 from locators.alerts_frame_windows_locators import BrowserWindowsPageLocators, AlertsPageLocators, FramesPageLocators, \
     NestedFramesPageLocators, ModalDialogsPageLocators
 from pages.base_page import BasePage
+
 
 
 class BrowserWindowsPage(BasePage):
@@ -33,13 +35,18 @@ class AlertsPage(BasePage):
     @allure.step('get text from alert')
     def check_see_alert(self):
         self.element_is_visible(self.locators.SEE_ALERT_BUTTON).click()
-        alert_window = self.driver.switch_to.alert
-        return alert_window.text
+        try:
+            alert_window = self.driver.switch_to.alert
+            return alert_window.text
+        except UnexpectedAlertPresentException:
+            alert_window = self.driver.switch_to.alert
+            return alert_window.text
+    
 
     @allure.step('check alert appear after 5 sec')
     def check_alert_appear_5_sec(self):
         self.element_is_visible(self.locators.APPEAR_ALERT_AFTER_5_SEC_BUTTON).click()
-        time.sleep(6)
+        time.sleep(6)        
         try:
             alert_window = self.driver.switch_to.alert
             return alert_window.text

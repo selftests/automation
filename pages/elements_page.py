@@ -258,11 +258,23 @@ class DynamicPropertiesPage(BasePage):
 
     @allure.step('check changed of color')
     def check_changed_of_color(self):
-        color_button = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
-        color_button_before = color_button.value_of_css_property('color')
-        time.sleep(5)
-        color_button_after = color_button.value_of_css_property('color')
+        color_button_one = self.element_is_present(self.locators.COLOR_CHANGE_CLASS_ONE_BUTTON)
+        color_button_before = color_button_one.value_of_css_property("color")        
+        #time.sleep(5)
+        color_button_two = self.element_is_visible(self.locators.COLOR_CHANGE_CLASS_TWO_BUTTON)
+        color_button_after = color_button_two.value_of_css_property("color")
+        print(color_button_before, color_button_after)
         return color_button_before, color_button_after
+            
+
+        #color_button_one = self.element_is_present(self.locators.COLOR_CHANGE_BUTTON)
+        #color_button_before = color_button_one.value_of_css_property("color")        
+        #time.sleep(5)
+        #color_button_two = self.element_is_visible(self.locators.COLOR_CHANGE_BUTTON)
+        #color_button_after = color_button_two.value_of_css_property("color")
+        #print(color_button_before, color_button_after)
+        #return color_button_before, color_button_after
+
 
     @allure.step('check appear of button')
     def check_appear_of_button(self):
