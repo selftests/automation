@@ -29,8 +29,8 @@ jobs:
         run: pip install -r requirements.txt
       - name: first_test
         if: "github.event.inputs.deployment_target == 'first_test'"
-        run: pytest tests/alerts_frame_windows_tests.py
+        run: pytest tests/alerts_frame_windows_test.py::TestAlertsFrameWindow
       - name: second_test
         if: "github.event.inputs.deployment_target == 'second_test'"
-        run: pytest tests/elements_tests.py
+        run: pytest tests/elements_test.py::TestElements
      
