@@ -9,8 +9,11 @@ on:
         default: 
         type: choice
         options:
-          - first_test
-          - second_test
+          - alerts_frame_windows_test
+          - elements_test
+          - form_test
+          - interactions_test
+          - widgests_test
 
 jobs:   
   test:
@@ -27,10 +30,21 @@ jobs:
         run: sudo apt-get install google-chrome-stable
       - name: install dependencies
         run: pip install -r requirements.txt
-      - name: first_test
-        if: "github.event.inputs.deployment_target == 'first_test'"
+      - name: alerts_frame_windows_test
+        if: "github.event.inputs.deployment_target == 'alerts_frame_windows_test'"
         run: pytest tests/alerts_frame_windows_test.py::TestAlertsFrameWindow
-      - name: second_test
-        if: "github.event.inputs.deployment_target == 'second_test'"
+      - name: elements_test
+        if: "github.event.inputs.deployment_target == 'elements_test'"
         run: pytest tests/elements_test.py::TestElements
+      - name: form_test
+        if: "github.event.inputs.deployment_target == 'form_test'"
+        run: pytest tests/form_test.py::TestForm
+      - name: interactions_test
+        if: "github.event.inputs.deployment_target == 'interactions_test'"
+        run: pytest tests/interactions_test.py::TestInteractions
+      - name: widgests_test
+        if: "github.event.inputs.deployment_target == 'widgests_test'"
+        run: pytest tests/widgests_test.py::TestWidgets
+
+
      
