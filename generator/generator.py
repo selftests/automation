@@ -1,4 +1,5 @@
 import random
+import os
 from faker import Faker
 from data.data import Person, Color, Date
 
@@ -25,7 +26,7 @@ def generated_person():
 
 
 def generated_file():
-    path = rf'C:\Users\User\Desktop\example\automation\filetest{random.randint(0, 999)}.txt'
+    path = (rf'{os.getcwd()}\downloads\filetest{random.randint(0, 999)}.txt')
     file = open(path, 'w+')
     file.write(f'Hello World{random.randint(0, 999)}')
     file.close()
