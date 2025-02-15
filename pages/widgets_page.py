@@ -188,7 +188,8 @@ class ToolTipsPage(BasePage):
         element = self.element_is_present(hover_elem)
         self.action_move_to_element(element)
         self.element_is_visible(wait_elem)
-        tool_tip_text = self.element_is_visible(self.locators.TOOL_TIPS_INNERS)
+        element.click()
+        tool_tip_text = self.element_is_clickable(self.locators.TOOL_TIPS_INNERS)
         text = tool_tip_text.text
         return text
 
