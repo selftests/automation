@@ -2,6 +2,7 @@ import allure
 from selenium.webdriver import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait as wait
 from selenium.webdriver.support import expected_conditions as EC
+#from selenium.webdriver.support.select import Select
 
 
 class BasePage:
